@@ -13,7 +13,7 @@ func CreateGenesisBlock() *models.Block {
 	return models.NewBlock(0, time.Now(), []byte("Genesis Block"), []byte("0"))
 }
 
-// Creates the next block in the chain based on the previous Block.
+// Creates the next block in the chain based on the previous block.
 func NextBlock(b *models.Block) *models.Block {
 	nextIndex := b.Index
 	nextIndex++

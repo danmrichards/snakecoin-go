@@ -28,6 +28,6 @@ func main() {
 		previousBlock = nextBlock
 
 		log.Printf("block %d has been added to the blockchain!\n", nextBlock.Index)
-		log.Printf("hash: %s\n'n", hex.EncodeToString(nextBlock.Hash))
+		log.Printf("hash: %s\n\n", hex.EncodeToString(nextBlock.Hash))
 	}
 }
