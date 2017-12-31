@@ -17,4 +17,6 @@
 .glide/
 
 # End of https://www.gitignore.io/api/go
+
 .idea
+vendor
