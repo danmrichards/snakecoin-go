@@ -16,20 +16,26 @@ func TestBlock_String(t *testing.T) {
 			NewBlock(
 				1,
 				time.Date(2017, 12, 31, 15, 15, 24, 0, time.UTC),
-				[]byte("test block 1"),
+				&Data{
+					Proof:        9,
+					Transactions: nil,
+				},
 				[]byte("0"),
 			),
-			"12017-12-31T15:15:24Ztest block 10",
+			"12017-12-31T15:15:24Z930",
 		},
 		{
 			"test block 2",
 			NewBlock(
 				2,
 				time.Date(2017, 12, 31, 15, 15, 24, 0, time.UTC),
-				[]byte("test block 2"),
+				&Data{
+					Proof:        18,
+					Transactions: nil,
+				},
 				[]byte("1"),
 			),
-			"22017-12-31T15:15:24Ztest block 21",
+			"22017-12-31T15:15:24Z1831",
 		},
 	}
 

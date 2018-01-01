@@ -7,14 +7,17 @@ import (
 	"testing"
 	"time"
 
-	"github.com/danmrichards/snakecoin-go/models"
+	"github.com/danmrichards/snakecoin-go/blockchain/models"
 )
 
 func TestCreateGenesisBlock(t *testing.T) {
 	expectedBlock := &models.Block{
-		Index:        0,
-		Timestamp:    time.Now(),
-		Data:         []byte("Genesis Block"),
+		Index:     0,
+		Timestamp: time.Now(),
+		Data: &models.Data{
+			Proof:        9,
+			Transactions: nil,
+		},
 		PreviousHash: []byte("0"),
 	}
 
@@ -34,24 +37,5 @@ func TestCreateGenesisBlock(t *testing.T) {
 			hex.EncodeToString(expectedBlock.Hash),
 			hex.EncodeToString(genesisBlock.Hash),
 		)
-	}
-}
-
-func TestNextBlock(t *testing.T) {
-	previousBlock := CreateGenesisBlock()
-
-	for i := 1; i <= 5; i++ {
-		nextBlock := NextBlock(previousBlock)
-
-		if bytes.Compare(nextBlock.PreviousHash, previousBlock.Hash) != 0 {
-			t.Errorf(
-				"TestNextBlock: block chain failed at index %d, expected %s got %s",
-				i,
-				hex.EncodeToString(previousBlock.PreviousHash),
-				hex.EncodeToString(nextBlock.PreviousHash),
-			)
-		}
-
-		previousBlock = nextBlock
 	}
 }
